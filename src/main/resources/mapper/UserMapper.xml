@@ -88,6 +88,12 @@
     from user
     where emp_no = #{empNo,jdbcType=VARCHAR}
   </select>
+  <select id="selectNotInEmployee" resultType="java.lang.String">
+    select employee.emp_no
+	  from employee left join user
+      on (employee.emp_no = user.emp_no)
+      where user.emp_no is null
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from user
     where emp_no = #{empNo,jdbcType=VARCHAR}

@@ -1,0 +1,273 @@
+
+
+<html>
+<head>
+    <title>员工管理</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="//localhost:8080/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="http://localhost:8080/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/nav.css">
+    <link rel="stylesheet" href="http://localhost:8080/css/user.css">
+
+</head>
+<body>
+
+
+
+
+<nav class="navStyle">
+    <div>
+        <a class="navbar-brand" href="">首页</a>
+
+        <a class="navbar-brand" href="">剧目管理</a>
+        <a class="navbar-brand" href="">影厅管理</a>
+        <a class="navbar-brand" href="">演出计划管理</a>
+        <a class="navbar-brand" href="#">员工管理</a>
+        <a class="navbar-brand" href="/toemployee">用户管理</a>
+        <a class="navbar-brand log" id="user"></a>
+        <a class="navbar-brand log" href="" id="logout">退出</a>
+    </div>
+</nav>
+<div class="userTheme">
+    <h1 class="textStyle">员工管理</h1>
+</div>
+<div>
+    <div class="container">
+        <div class="row col-md-9 col-md-offset-2 custyle">
+            <!--<table class="table table-hover table-hover custab" id="mytable">-->
+            <!--<tbody>-->
+            <div class="row searchUser">
+                <input type=" text" class="form-control search" id="userId" placeholder="请输入ID查询"/>
+                <button class="btn btn-info">查询 ID</button>
+                <button class="btn   searchUser buttonStyle" id="emp_add_model_btn"> 添 加 用 户</button>
+            </div>
+
+            <div class="row col-md-12">
+
+                <table class="table table-hover" id="emp_table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>账号</th>
+                        <th>姓名</th>
+                        <th>联系方式</th>
+                        <th>地址</th>
+                        <th>邮箱</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!--分页条-->
+            <div class="row">
+                <div class="col-md-6" id="page_info_area"></div>
+            </div>
+            <!--页码区域-->
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="page_nav_area"></div>
+            </div>
+            <!--</tbody>-->
+            <!--</table>-->
+        </div>
+    </div>
+</div>
+
+<!-- 员工添加的模态框 -->
+<div class="modal fade" id="empAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">员工添加</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 表单-->
+                <form>
+                    <div class="form-group">
+                        <label >员工账号</label>
+                        <input type="text" class="form-control" id="empNo_add_input" placeholder="账号">
+                    </div>
+
+                    <div class="form-group">
+                        <label >员工姓名</label>
+                        <input type="text" class="form-control" id="empName_add_input" placeholder="姓名">
+                    </div>
+
+                    <div class="form-group">
+                        <label >联系方式</label>
+                        <input type="text" class="form-control" id="empTelNum_add_input" placeholder="联系方式">
+                    </div>
+
+                    <div class="form-group">
+                        <label >家庭住址</label>
+                        <input type="text" class="form-control" id="empAddr_add_input" placeholder="家庭住址">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label >Email地址</label>
+                        <input type="email" class="form-control" id="empEmail_add_input" placeholder="Email地址">
+                    </div>
+
+                </form>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+    //本地加载完毕之后加载
+    $(function () {
+        to_page(1);
+    });
+
+    function to_page(pn) {
+        $.ajax({
+            url:"http://localhost:8080/getAllEmployee",
+            data:"pn="+ pn,
+            type:"GET",
+            success:function (result) {
+                // console.log(result);
+                // 解析并显示员工数据
+                build_emp_table(result);
+                // 解析并显示分页数据
+                build_page_info(result);
+                ///页码数据
+                build_page_nav(result);
+            }
+        });
+    }
+
+
+
+    function build_emp_table(result) {
+        //位置  #emp_table tbody
+        //构建前清空表格
+        $("#emp_table tbody").empty();
+        var emps = result.data.pageinfo.list;
+        $.each(emps,function (index,item) {
+            // alert(item.empName);
+            var empIdId = $("<td></td>").append(item.empId);
+            var empNoId =  $("<td></td>").append(item.empNo);
+            var empNameId = $("<td></td>").append(item.empName);
+            var empTelNumId = $("<td></td>").append(item.empTelNum);
+            var empAddrId = $("<td></td>").append(item.empAddr);
+            var empEmailId = $("<td></td>").append(item.empEmail);
+            //加入button
+            var updatebtn = $("<button></button>").addClass("btn btn-primary btn-sm")
+                .append("编辑");
+            var deletebtn =  $("<button></button>").addClass("btn btn-danger btn-sm")
+                .append("删除");
+            var btnTd = $("<th></th>").append(updatebtn).append(" ").append(deletebtn);
+            $("<tr></tr>").append(empIdId)
+                .append(empNoId)
+                .append(empNameId)
+                .append(empTelNumId)
+                .append(empAddrId)
+                .append(empEmailId)
+                .append(btnTd)
+                .appendTo("#emp_table tbody");
+        })
+    }
+
+
+    //分页信息展示
+    function build_page_info(result) {
+        //位置  #page_info_area
+        //清空 表格数据
+        $("#page_info_area").empty();
+        var info = result.data.pageinfo;
+        var pagenum = info.pageNum;
+        var total = info.total;
+        $("#page_info_area").append("当前第"+pagenum+"页，总共"+total+"条数据");
+    }
+
+    //导航栏信息
+    function build_page_nav(result) {
+        //page_nav_area区域
+        //清空表格
+        $("#page_nav_area").empty();
+        var ul = $("<ul></ul>").addClass("pagination")
+        var firstPageLi = $("<li></li>").append($("<a></a>").append("首页").attr("href","#"));
+        var prePageLi = $("<li></li>").append($("<a></a>").append("&laquo;"));
+        //判断前一页是否可点击
+        if(result.data.pageinfo.hasPreviousPage == false){
+            firstPageLi.addClass("disabled");
+            prePageLi.addClass("disabled");
+        }else {
+            //添加点击翻页事件
+            firstPageLi.click(function () {
+                to_page(1);
+            });
+            prePageLi.click(function () {
+                to_page(result.data.pageinfo.pageNum-1);
+            });
+        }
+
+
+
+        //下一页  末页
+        var nextPageLi = $("<li></li>").append($("<a></a>").append("&raquo;"));
+        var lastPageLi = $("<li></li>").append($("<a></a>").append("末页").attr("href","#"));
+        //判断是否有下一页，是否可点击
+        if(result.data.pageinfo.hasNextPage == false){
+            nextPageLi.addClass("disabled");
+            lastPageLi.addClass("disabled");
+        }else {
+            //添加点击翻页事件
+            nextPageLi.click(function () {
+                to_page(result.data.pageinfo.pageNum+1);
+            });
+            lastPageLi.click(function () {
+                to_page(result.data.pageinfo.pages);
+            });
+        }
+
+
+
+        ul.append(firstPageLi).append(prePageLi);
+        $.each(result.data.pageinfo.navigatepageNums,function (index,item) {
+            var numLi = $("<li></li>").append($("<a></a>").append(item));
+            if(result.data.pageinfo.pageNum == item){
+                numLi.addClass("active");
+            }
+            numLi.click(function () {
+                to_page(item);
+            })
+            ul.append(numLi);
+        });
+        ul.append(nextPageLi).append(lastPageLi);
+        var navId = $("<nav></nav>").append(ul);
+        navId.appendTo("#page_nav_area");
+    }
+
+    //弹出框
+    $("#emp_add_model_btn").click(function () {
+        $("#empAddModel").modal({
+            backdrop:'static'
+        });
+    });
+
+</script>
+<
+</body>
+</html>

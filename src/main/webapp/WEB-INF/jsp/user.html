@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>用户管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <meta   http-equiv= "Pragma"   content= "no-cache" />
+    <meta   http-equiv= "Cache-Control"   content= "no-cache" />
+    <meta   http-equiv= "Expires"   content= "0" />
+
+</head>
+<body>
+
+
+
+
+<nav class="navStyle">
+    <div>
+        <a class="navbar-brand" href="">首页</a>
+
+        <a class="navbar-brand" href="">剧目管理</a>
+        <a class="navbar-brand" href="/tostudio">影厅管理</a>
+        <a class="navbar-brand" href="">演出计划管理</a>
+        <a class="navbar-brand" href="/toemployee">员工管理</a>
+        <a class="navbar-brand" href="/touser">用户管理</a>
+        <a class="navbar-brand log" id="user"></a>
+        <a class="navbar-brand log" href="" id="logout">退出</a>
+    </div>
+</nav>
+<div class="userTheme">
+    <h1 class="textStyle">用户管理</h1>
+</div>
+<div>
+    <div class="container">
+        <div class="row col-md-9 col-md-offset-2 custyle">
+            <!--<table class="table table-hover table-hover custab" id="mytable">-->
+            <!--<tbody>-->
+            <div class="row searchUser">
+                <input type=" text" class="form-control search" id="userId" placeholder="请输入ID查询"/>
+                <button class="btn btn-info">查询 ID</button>
+                <button class="btn   searchUser buttonStyle" id="user_add_model_btn"> 添 加 用 户 </button>
+            </div>
+
+            <div class="row col-md-12">
+
+                <table class="table table-hover" id="user_table">
+                    <thead>
+                    <tr>
+                        <th>账号</th>
+                        <th>密码</th>
+                        <th>权限</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+
+            </div>
+            <!--分页条-->
+            <div class="row">
+                <div class="col-md-6" id="page_info_area"></div>
+            </div>
+            <!--页码区域-->
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="page_nav_area"></div>
+            </div>
+            <!--</tbody>-->
+            <!--</table>-->
+        </div>
+    </div>
+</div>
+
+<!-- 员工添加的模态框 -->
+<div class="modal fade" id="userAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">员工添加</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 表单-->
+                <form id="user_Insert_form" name="user_Insert_form">
+
+                    <!--从数据库中选择-->
+                    <div class="form-group">
+                        <label >用户账号</label>
+                        <!--<input type="text" class="form-control" id="userNo_add_input" name="userNo" placeholder="用户账号" >-->
+                        <select class="form-control" name="empNo" id="userNo_add_select">
+                            <!--<option>1</option>-->
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label >用户密码</label>
+                        <input type="password" class="form-control" id="userName_add_input" name="empPass" placeholder="员工密码">
+                    </div>
+
+                    <div class="form-group">
+                        <label >用户权限</label>
+                        <!--<input type="text" class="form-control" id="userTelNum_add_input" name="type" placeholder="用户权限">-->
+
+                        <label class="radio-inline">
+                            <input type="radio" name="type" id="user_add_type1" value="0" checked="checked"> 普通用户
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="type" id="user_add_type2" value="1"> 管理员
+                        </label>
+                    </div>
+                    <div hidden>
+                        <label >用户头像</label>
+                        <input type="text" class="form-control" id="headPath_add_input" name="headPath" >
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="user_insert_submit_btn">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 员工编辑的模态框 -->
+<div class="modal fade" id="userUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myUpdateLabel">员工信息修改</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- 表单-->
+                <form id="user_Update_form" name="user_Update_form">
+
+                    <div class="form-group">
+                        <label >用户账号</label>
+                        <!--<input type="text" class="form-control" id="empNo_Update_input" >-->
+                        <input type="text" class="form-control" id="userNo_Update_input" name="empNo" readonly="readonly">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label >用户密码</label>
+                        <input type="text" class="form-control" id="userPass_Update_input" name="empPass" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >用户权限</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="type" id="user_update_type1" value="0" checked="checked"> 普通用户
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="type" id="user_update_type2" value="1"> 管理员
+                        </label>
+                    </div>
+
+                    <div hidden>
+                        <label >用户头像</label>
+                        <input type="text" class="form-control" id="headPath_Update_input" name="headPath" value="null">null
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="user_submit_btn">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 员工删除的警示模态框 -->
+<div class="modal fade bs-example-modal-sm" id="userDeleteModel" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >确认删除用户？</h4>
+            </div>
+            <div class="modal-body center">
+
+                <button type="button" class="btn btn-danger" id="model_delete_btn" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/user.js"></script>
+
+</body>
+</html>

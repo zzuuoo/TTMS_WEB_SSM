@@ -1,0 +1,63 @@
+.custab {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+}
+
+.custab:hover {
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+}
+
+#waring {
+    color: red;
+}
+
+.searchUser {
+    display: inline;
+}
+
+.search {
+    width: 200px;
+    display: inline;
+}
+
+.addUserStyle {
+    width: 500px;
+    margin: 0 auto;;
+}
+
+.editUser {
+    width: 500px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.buttonStyle {
+    background: #f5f1eb;
+    color: #b4a078;
+}
+
+.buttonStyle:hover {
+    /*background-color: #b4a078;*/
+    color: whitesmoke;
+}
+
+.userTheme h1{
+    width:100%;
+    height:90px;
+    color: #b4a078;
+    font-size: 400%;
+    text-align: center;
+}
+
+.textStyle{
+    text-align: center;
+    font-size: 120%;
+}
+
+*{
+    font-family: "AR PL UKai CN","Noto Sans CJK JP Bold";
+}
