@@ -14,9 +14,9 @@ public class Sale {
 
     private BigDecimal saleChange;
 
-    private Short saleType;
+    private Short saleType;// 1：销售单\r\n            -1：退款单
 
-    private Short saleStatus;
+    private Short saleStatus;// 0：代付款\r\n            1：已付款
 
     public Long getSaleId() {
         return saleId;

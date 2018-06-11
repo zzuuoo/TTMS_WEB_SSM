@@ -32,7 +32,7 @@ public class MobileUserController {
         {
             return user;
         }
-        return user;
+        return null;
     }
     @ResponseBody
     @RequestMapping(value ="getUserById",method = RequestMethod.GET)

@@ -240,4 +240,11 @@
       sale_status = #{saleStatus,jdbcType=SMALLINT}
     where sale_ID = #{saleId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByEmpId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sale
+    where emp_id = #{empId,jdbcType=BIGINT}
+  </select>
 </mapper>

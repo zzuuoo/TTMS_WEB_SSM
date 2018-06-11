@@ -7,7 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eec42055-a7de-46f0-a35d-b6d8c7b5e96d" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileSaleController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xiyou/dao/EmployeeMapper.java" afterPath="$PROJECT_DIR$/src/main/java/xiyou/dao/EmployeeMapper.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java" afterPath="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java" afterPath="$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml" afterPath="$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -20,28 +23,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
-      <file leaf-file-name="MobileTicketController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileTicketController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaleService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/SaleService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SaleServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/impl/SaleServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -66,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MobileSaleController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MobileSaleController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileSaleController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1014">
-              <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+            <state relative-caret-position="390">
+              <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="39" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#553#554#0" expanded="true" />
@@ -82,51 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SaleMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/SaleMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="414">
-              <caret line="243" column="27" lean-forward="false" selection-start-line="243" selection-start-column="14" selection-end-line="243" selection-end-column="27" />
-              <folding>
-                <marker date="1528691508206" expanded="true" signature="3684:3792" ph="select from sale" />
-                <marker date="1528691508206" expanded="true" signature="3875:3937" ph="delete from sale... " />
-                <marker date="1528691508206" expanded="true" signature="4025:4041" ph="delete from sale... " />
-                <marker date="1528691508206" expanded="true" signature="4205:4556" ph="insert into sale... " />
-                <marker date="1528691508206" expanded="true" signature="5973:5998" ph="select count... sale" />
-                <marker date="1528691508206" expanded="true" signature="7157:7561" ph="update sale... " />
-                <marker date="1528691508206" expanded="true" signature="7756:8432" ph="update sale... " />
-                <marker date="1528691508206" expanded="true" signature="8516:8874" ph="update sale... " />
-                <marker date="1528691508206" expanded="true" signature="8982:9087" ph="select from sale" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlayServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/impl/PlayServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1053">
-              <caret line="43" column="32" lean-forward="false" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SaleMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/SaleMapper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="629">
-              <caret line="30" column="44" lean-forward="false" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Sale.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="25" />
+            <state relative-caret-position="468">
+              <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -135,8 +76,68 @@
       <file leaf-file-name="Sale_item.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale_item.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
+            <state relative-caret-position="234">
+              <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobileTicketController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileTicketController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="429">
+              <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobileUserController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="858">
+              <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MobileEmployeeController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileEmployeeController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="663">
+              <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="47" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="603">
+              <caret line="228" column="27" lean-forward="false" selection-start-line="228" selection-start-column="14" selection-end-line="228" selection-end-column="27" />
+              <folding>
+                <marker date="1528697482626" expanded="true" signature="3591:3702" ph="select from employee" />
+                <marker date="1528697482626" expanded="true" signature="3788:3853" ph="delete from employee... " />
+                <marker date="1528697482626" expanded="true" signature="3945:3965" ph="delete from employee... " />
+                <marker date="1528697482626" expanded="true" signature="4133:4427" ph="insert into employee... " />
+                <marker date="1528697482626" expanded="true" signature="5667:5696" ph="select count... employee" />
+                <marker date="1528697482626" expanded="true" signature="6719:7052" ph="update employee... " />
+                <marker date="1528697482626" expanded="true" signature="7251:7806" ph="update employee... " />
+                <marker date="1528697482626" expanded="true" signature="7894:8188" ph="update employee... " />
+                <marker date="1528697482626" expanded="true" signature="8295:8405" ph="select from employee" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EmployeeMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/EmployeeMapper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="623">
+              <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -172,16 +173,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/xiyou/service/TicketService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/xiyou/interceptor/BaseInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/interceptor/TestInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/service/impl/UserServiceUmpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/controller/MobileUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/MobileEmployeeController.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileEmployeeController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/pojo/Msg.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/controller/EmployeeController.java" />
@@ -223,6 +220,10 @@
         <option value="$PROJECT_DIR$/src/main/java/xiyou/dao/SaleMapper.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/service/impl/SaleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileSaleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java" />
+        <option value="$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/xiyou/dao/EmployeeMapper.java" />
       </list>
     </option>
   </component>
@@ -269,10 +270,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-11" />
-    <option name="y" value="-11" />
-    <option name="width" value="1942" />
-    <option name="height" value="1102" />
+    <option name="x" value="2752" />
+    <option name="y" value="31" />
+    <option name="width" value="1934" />
+    <option name="height" value="1090" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -349,15 +350,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="xiyou" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiyou" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -383,25 +375,6 @@
               <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiyou" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xiyou" type="462c0819:PsiDirectoryNode" />
-              <item name="service" type="462c0819:PsiDirectoryNode" />
-              <item name="impl" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -411,38 +384,6 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="spring" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TTMS_WEB_SSM" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="jsp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="TTMS_WEB_SSM" type="b2602c69:ProjectViewProjectNode" />
@@ -698,7 +639,7 @@
       <workItem from="1528295146672" duration="5995000" />
       <workItem from="1528329510426" duration="13335000" />
       <workItem from="1528519473657" duration="26816000" />
-      <workItem from="1528675663305" duration="12592000" />
+      <workItem from="1528675663305" duration="17410000" />
     </task>
     <servers />
   </component>
@@ -711,16 +652,16 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89385000" />
+    <option name="totallyTimeSpent" value="94203000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-11" y="-11" width="1942" height="1102" extended-state="6" />
+    <frame x="2869" y="-11" width="2071" height="1174" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3292683" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05453564" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40434125" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -735,10 +676,10 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.99451756" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.99390244" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29589632" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27662796" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -761,125 +702,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TicketDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="6" column="46" lean-forward="false" selection-start-line="6" selection-start-column="46" selection-end-line="6" selection-end-column="46" />
-          <folding>
-            <marker date="1528248978083" expanded="true" signature="260:280" ph="SELECT * FRO... ticket" />
-            <marker date="1528248978083" expanded="true" signature="402:451" ph="SELECT * FRO... ticket" />
-            <marker date="1528248978083" expanded="true" signature="542:593" ph="SELECT * FRO... ticket" />
-            <marker date="1528248978083" expanded="true" signature="1016:1063" ph="DELETE FROM ticket... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/StudioDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/StudioDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-292">
-          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Ticket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/StudioMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="654">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/TicketMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="397">
-          <caret line="243" column="24" lean-forward="false" selection-start-line="243" selection-start-column="17" selection-end-line="243" selection-end-column="24" />
-          <folding>
-            <marker date="1528535275550" expanded="true" signature="3639:3753" ph="select from ticket" />
-            <marker date="1528535275550" expanded="true" signature="3837:3905" ph="delete from ticket... " />
-            <marker date="1528535275550" expanded="true" signature="3995:4013" ph="delete from ticket... " />
-            <marker date="1528535275550" expanded="true" signature="4179:4511" ph="insert into ticket... " />
-            <marker date="1528535275550" expanded="true" signature="5823:5850" ph="select count... ticket" />
-            <marker date="1528535275550" expanded="true" signature="6930:7301" ph="update ticket... " />
-            <marker date="1528535275550" expanded="true" signature="7498:8107" ph="update ticket... " />
-            <marker date="1528535275550" expanded="true" signature="8193:8525" ph="update ticket... " />
-            <marker date="1528535275550" expanded="true" signature="8635:8730" ph="select from ticket" />
-            <marker date="1528535275550" expanded="true" signature="8813:8879" ph="delete from ticket... " />
-            <marker date="1528535275550" expanded="true" signature="8968:9292" ph="update ticket... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/TicketMapper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="623">
-          <caret line="32" column="37" lean-forward="false" selection-start-line="32" selection-start-column="37" selection-end-line="32" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Schedule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-273">
-          <caret line="6" column="27" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/StudioMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="564">
-          <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
-          <folding>
-            <marker date="1528543632799" expanded="true" signature="3690:3805" ph="select from studio" />
-            <marker date="1528543632799" expanded="true" signature="3891:3960" ph="delete from studio... " />
-            <marker date="1528543632799" expanded="true" signature="4050:4068" ph="delete from studio... " />
-            <marker date="1528543632799" expanded="true" signature="4282:4642" ph="insert into studio... " />
-            <marker date="1528543632799" expanded="true" signature="6058:6085" ph="select count... studio" />
-            <marker date="1528543632799" expanded="true" signature="7207:7606" ph="update studio... " />
-            <marker date="1528543632799" expanded="true" signature="7803:8454" ph="update studio... " />
-            <marker date="1528543632799" expanded="true" signature="8540:8900" ph="update studio... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/spring/spring-dao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="31" column="4" lean-forward="false" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="19" column="13" lean-forward="false" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/SeatExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10920">
-          <caret line="99" column="35" lean-forward="false" selection-start-line="99" selection-start-column="23" selection-end-line="99" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/StudioService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -956,14 +778,6 @@
             <marker date="1528683098554" expanded="true" signature="9888:10373" ph="update play... " />
             <marker date="1528683098554" expanded="true" signature="10481:10598" ph="select from play" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/PlayService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1070,8 +884,8 @@
         <state relative-caret-position="359">
           <caret line="21" column="53" lean-forward="false" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="53" />
           <folding>
-            <element signature="e#790#791#0" expanded="true" />
-            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#790#791#0" expanded="false" />
+            <element signature="e#837#838#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1089,11 +903,11 @@
         <state relative-caret-position="-390">
           <caret line="20" column="66" lean-forward="false" selection-start-line="20" selection-start-column="58" selection-end-line="20" selection-end-column="66" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-            <element signature="e#662#663#0" expanded="true" />
-            <element signature="e#785#786#0" expanded="true" />
-            <element signature="e#828#829#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#600#601#0" expanded="false" />
+            <element signature="e#662#663#0" expanded="false" />
+            <element signature="e#785#786#0" expanded="false" />
+            <element signature="e#828#829#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1185,22 +999,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale_item.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="4" column="26" lean-forward="true" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileTicketController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/impl/PlayServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1053">
@@ -1214,7 +1012,7 @@
         <state relative-caret-position="468">
           <caret line="12" column="31" lean-forward="false" selection-start-line="12" selection-start-column="31" selection-end-line="12" selection-end-column="31" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1227,14 +1025,6 @@
             <element signature="e#291#292#0" expanded="false" />
             <element signature="e#347#348#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1294,10 +1084,82 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebPlayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebScheduleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebSeatService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebStudioService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebTicketService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="17" lean-forward="false" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/WebEmployeeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/EmployeeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/service/PlayService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="6" column="30" lean-forward="true" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileSaleController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1014">
-          <caret line="38" column="48" lean-forward="false" selection-start-line="38" selection-start-column="48" selection-end-line="38" selection-end-column="48" />
+        <state relative-caret-position="390">
+          <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#553#554#0" expanded="true" />
@@ -1305,6 +1167,72 @@
             <element signature="e#1031#1032#0" expanded="true" />
             <element signature="e#1086#1087#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="16" column="57" lean-forward="false" selection-start-line="16" selection-start-column="27" selection-end-line="16" selection-end-column="57" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/pojo/Sale_item.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="6" column="35" lean-forward="true" selection-start-line="6" selection-start-column="35" selection-end-line="6" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileTicketController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="83" column="5" lean-forward="true" selection-start-line="83" selection-start-column="5" selection-end-line="83" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileUserController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="858">
+          <caret line="34" column="19" lean-forward="false" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/EmployeeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="603">
+          <caret line="228" column="27" lean-forward="false" selection-start-line="228" selection-start-column="14" selection-end-line="228" selection-end-column="27" />
+          <folding>
+            <marker date="1528697482626" expanded="true" signature="3591:3702" ph="select from employee" />
+            <marker date="1528697482626" expanded="true" signature="3788:3853" ph="delete from employee... " />
+            <marker date="1528697482626" expanded="true" signature="3945:3965" ph="delete from employee... " />
+            <marker date="1528697482626" expanded="true" signature="4133:4427" ph="insert into employee... " />
+            <marker date="1528697482626" expanded="true" signature="5667:5696" ph="select count... employee" />
+            <marker date="1528697482626" expanded="true" signature="6719:7052" ph="update employee... " />
+            <marker date="1528697482626" expanded="true" signature="7251:7806" ph="update employee... " />
+            <marker date="1528697482626" expanded="true" signature="7894:8188" ph="update employee... " />
+            <marker date="1528697482626" expanded="true" signature="8295:8405" ph="select from employee" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/dao/EmployeeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="623">
+          <caret line="30" column="13" lean-forward="false" selection-start-line="30" selection-start-column="13" selection-end-line="30" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/xiyou/mobileController/MobileEmployeeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="663">
+          <caret line="32" column="47" lean-forward="false" selection-start-line="32" selection-start-column="29" selection-end-line="32" selection-end-column="47" />
+          <folding />
         </state>
       </provider>
     </entry>
