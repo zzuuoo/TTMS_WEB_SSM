@@ -51,7 +51,7 @@ public class MobileTicketController {
             return "success";
         return "failed";
     }
-
+    @ResponseBody
     @RequestMapping(value = "insertTicket",method = RequestMethod.POST)
     private String insertTicket(@RequestBody Ticket ticket)
     {
@@ -68,10 +68,26 @@ public class MobileTicketController {
      * @param ticket
      * @return
      */
+    @ResponseBody
     @RequestMapping(value = "updateTicket",method = RequestMethod.POST)
     private String updateTicket(@RequestBody  Ticket ticket)
     {
         if(ticketService.update(ticket)>0)
+        {
+            return "succeed";
+        }
+        return "failed";
+    }
+    @ResponseBody
+    @RequestMapping(value = "updateTicketList",method = RequestMethod.POST)
+    private String updateTicketList(@RequestBody  List<Ticket> ticket)
+    {
+        int k =0;
+        for(int i=0;i<ticket.size();i++)
+        {
+            k = ticketService.update(ticket.get(i));
+        }
+        if(k>0)
         {
             return "succeed";
         }
