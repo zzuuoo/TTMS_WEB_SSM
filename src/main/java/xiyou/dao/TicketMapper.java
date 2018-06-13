@@ -32,4 +32,6 @@ public interface TicketMapper {
 
     int deleteBySchedId(int schedId);
     int updatePriceByschedId(Ticket record);
+    int updateTicketStatus(Integer status,Integer sched_id,Integer seat_id);
+    Ticket selectBySchedIdSeatId(Integer schedId,Integer seatId);
 }

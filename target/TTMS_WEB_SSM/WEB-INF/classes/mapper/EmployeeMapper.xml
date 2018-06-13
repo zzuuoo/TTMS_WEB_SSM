@@ -225,4 +225,11 @@
       emp_email = #{empEmail,jdbcType=VARCHAR}
     where emp_id = #{empId,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByEmpNo" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from employee
+    where emp_no = #{empNo,jdbcType=VARCHAR}
+  </select>
 </mapper>

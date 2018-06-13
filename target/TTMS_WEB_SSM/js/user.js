@@ -29,9 +29,17 @@ function build_user_table(result) {
     $("#user_table tbody").empty();
     var users = result.data.pageinfo.list;
     $.each(users,function (index,item) {
+
+        var typename;
+        if(item.type==0){
+            typename="员工";
+        }else {
+            typename="管理员";
+        }
+
         var userNoId =  $("<td></td>").append(item.empNo);
         var userPassId = $("<td></td>").append(item.empPass);
-        var typeId = $("<td></td>").append(item.type);
+        var typeId = $("<td></td>").append(typename);
         //加入button
         var updatebtn = $("<button></button>").addClass("btn btn-primary btn-sm")
             .append("编辑").click(function () {

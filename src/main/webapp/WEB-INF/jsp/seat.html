@@ -11,161 +11,19 @@
     <link rel="stylesheet" href="../css/jq22.css">
 </head>
 
-<script>
-
-    var seat;
-
-    window.onload = function () {
-        var data = sessionStorage.getItem('user');
-        if (data) {
-            document.getElementById("user").innerHTML = "退出";
-            document.getElementById("logout").innerHTML = `您好！ ${data}`;
-            document.getElementById("user").href = './home.html';
-            document.getElementById("logout").href = './personalCenter.html';
-        } else {
-            document.getElementById("logout").innerHTML = `登录`;
-            document.getElementById("logout").href = `./login.html`;
-        }
-
-        var studio_id = window.location.href.split("=")[1];
-
-        $.ajax({
-            url: "http://123.206.67.174:18000/seat/querySeat",
-            type: "GET",
-            datatype: 'jsonp',
-            data: {
-                studio_id: studio_id
-            },
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: 'true'
-            },
-            success: function (data) {
-                console.log("seat : ", data);
-
-                seat = data;
-
-                var seatList = data.Detail;
-
-                for (var i = 0; i <= seatList[seatList.length - 1].seat_row; i++) {
-
-                    document.getElementById('seat').innerHTML += i + 1 + ' ';
-
-                    for (var j = 0; j < seatList.length; j++) {
-
-                        var seatCol = parseInt(seatList[j].seat_column) + 1;
-
-                        if (seatList[j].seat_row === i && seatList[j].seat_status === 1) {
-                            document.getElementById('seat').innerHTML += '<button class="seatCol btn-default"  ' +
-                                    ' onclick=getRowCol(' + seatList[j].seat_id + ')>' + seatCol + '</button>'
-                        } else if (seatList[j].seat_row === i && seatList[j].seat_status === 0) {
-                            document.getElementById('seat').innerHTML += '<button class="badSeat btn-default"  ' +
-                                    ' onclick=getRowCol(' + seatList[j].seat_id + ')>' + seatCol + '</button>'
-                        }
-                    }
-                    document.getElementById('seat').innerHTML += '<br>'
-                }
-            },
-            error: function (err) {
-                console.log("err ", err)
-            }
-        });
-
-
-        document.getElementById("user").addEventListener('click', function () {
-            sessionStorage.removeItem("user");
-            $.ajax({
-                url: `http://123.206.67.174:18000/user/cancellation?`,
-                type: 'get',
-                datatype: 'jsonp',
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                success: function (data) {
-                    if (data.Detail.status) {
-                        window.location.href = `home.html?status=0`;
-                    } else {
-                        window.location.href = 'home.html?status=1'
-                    }
-                }
-            });
-        });
-    };
-
-
-    function getRowCol(a) {
-
-        for (var j = 0; j < seat.Detail.length; j++) {
-            if (seat.Detail[j].seat_id === a) {
-
-                var status = 1;
-
-                if (seat.Detail[j].seat_status === 1) {
-                    status = 0;
-                } else {
-                    status = 1;
-                }
-
-                $.ajax({
-                    url: "http://123.206.67.174:18000/seat/updataSeat",
-                    type: "get",
-                    datatype: 'jsonp',
-                    crossDomain: true,
-                    xhrFields: {
-                        withCredentials: true
-                    },
-                    data: {
-                        seat_list: [
-                            {
-                                seat_status: status,
-                                seat_id: seat.Detail[j].seat_id,
-                                seat_row: seat.Detail[j].seat_row,
-                                seat_column: seat.Detail[j].seat_column
-                            },
-                            {
-                                seat_status: status,
-                                seat_id: seat.Detail[j].seat_id,
-                                seat_row: seat.Detail[j].seat_row,
-                                seat_column: seat.Detail[j].seat_column
-                            }
-
-                        ]
-                    },
-                    success: function (data, xhr) {
-                        console.log("update:", xhr);
-                        location.reload();
-                    },
-                    error: function (err) {
-                        console.log("err: ", err)
-                    }
-                })
-            }
-        }
-
-
-        var btn = document.getElementsByTagName("button");
-        for (var i = 0; i < btn.length; i++) {
-            (function (index) {
-                btn[index].onclick = function () {
-                    btn[index].style.backgroundColor = "#999";
-                }
-            }(i))
-        }
-    }
-
-</script>
-
 <body>
 
 <nav class="navStyle">
     <div>
-        <a class="navbar-brand" href="./home.html">首页</a>
-        <a class="navbar-brand" href="./user.html">用户管理</a>
-        <a class="navbar-brand" href="./play.html">剧目管理</a>
-        <a class="navbar-brand" href="./studio.html">影厅管理</a>
-        <a class="navbar-brand" href="./schedule.html">演出计划管理</a>
-        <a class="navbar-brand" href="./seat.html">座位管理</a>
+        <a class="navbar-brand" href="/tohome">首页</a>
+        <a class="navbar-brand" href="/toplay">影片管理</a>
+        <a class="navbar-brand" href="/tostudio">影厅管理</a>
+        <a class="navbar-brand" href="/toseat">座位管理</a>
+        <a class="navbar-brand" href="/toschedule">演出计划管理</a>
+        <a class="navbar-brand" href="/toemployee">员工管理</a>
+        <a class="navbar-brand" href="/touser">用户管理</a>
         <a class="navbar-brand log" id="user"></a>
-        <a class="navbar-brand log" href="./personalCenter.html" id="logout">退出</a>
+        <a class="navbar-brand log" href="" id="logout">退出</a>
     </div>
 </nav>
 

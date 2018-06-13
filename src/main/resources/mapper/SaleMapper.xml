@@ -109,7 +109,7 @@
       #{salePayment,jdbcType=DECIMAL}, #{saleChange,jdbcType=DECIMAL}, #{saleType,jdbcType=SMALLINT}, 
       #{saleStatus,jdbcType=SMALLINT})
   </insert>
-  <insert id="insertSelective" parameterType="xiyou.pojo.Sale">
+  <insert id="insertSelective" parameterType="xiyou.pojo.Sale" useGeneratedKeys="true" keyProperty="saleId">
     insert into sale
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="saleId != null">

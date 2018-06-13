@@ -42,7 +42,7 @@ public class MobileEmployeeController {
 
     @ResponseBody
     @RequestMapping(value = "insertEmployee",method = RequestMethod.POST)
-    public String insertEmployee(@RequestParam Employee employee)
+    public String insertEmployee(@RequestBody Employee employee)
     {
         if(employeeMapper.insert(employee)>0)
             return "succeed";
@@ -51,12 +51,20 @@ public class MobileEmployeeController {
 
     @ResponseBody
     @RequestMapping(value = "updatetEmployee",method = RequestMethod.POST)
-    public String updateEmployee(@RequestParam Employee employee)
+    public String updateEmployee(@RequestBody Employee employee)
     {
         if(employeeMapper.updateByPrimaryKey(employee)>0)
             return "succeed";
         return "failed";
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/selectByEmpNo",method = RequestMethod.GET)
+    public Employee selectByEmpNo(@RequestParam String empNo)
+    {
+        return employeeMapper.selectByEmpNo(empNo);
+    }
+
 
 
 

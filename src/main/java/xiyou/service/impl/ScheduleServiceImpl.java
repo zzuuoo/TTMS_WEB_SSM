@@ -2,11 +2,14 @@ package xiyou.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import xiyou.dao.*;
 import xiyou.pojo.*;
 import xiyou.service.ScheduleService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -23,6 +26,7 @@ public class ScheduleServiceImpl implements ScheduleService{
     @Autowired
     private StudioMapper studioMapper;
 
+    @Transactional
     @Override
     public int insert(Schedule schedule) {
         int in = scheduleMapper.insertSelective(schedule);
@@ -50,6 +54,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         return in;
     }
 
+    @Transactional
     @Override
     public int update(Schedule schedule) {
         Schedule sc = scheduleMapper.selectByPrimaryKey(schedule.getSchedId());
@@ -94,6 +99,7 @@ public class ScheduleServiceImpl implements ScheduleService{
         return in;
     }
 
+    @Transactional
     @Override
     public int delete(int schedId) {//数据库级联删除
         Schedule schedule = scheduleMapper.selectByPrimaryKey(schedId);
@@ -122,6 +128,15 @@ public class ScheduleServiceImpl implements ScheduleService{
 
     @Override
     public List<Schedule> selectByPlayId(int playId) {
-        return scheduleMapper.selectByPlayId(playId);
+        List<Schedule> schedules = new ArrayList<>();
+        List<Schedule> list = scheduleMapper.selectByPlayId(playId);
+        for(int i=0;i<list.size();i++)
+        {
+            if(list.get(i).getSchedTime().getTime()>new Date().getTime()+10*60*1000)
+            {
+                schedules.add(list.get(i));
+            }
+        }
+        return schedules;
     }
 }

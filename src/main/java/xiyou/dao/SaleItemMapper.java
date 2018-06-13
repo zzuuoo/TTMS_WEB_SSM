@@ -27,4 +27,6 @@ public interface SaleItemMapper {
     int updateByPrimaryKeySelective(SaleItem record);
 
     int updateByPrimaryKey(SaleItem record);
+
+    List<SaleItem> selectBySaleId(Long saleId);
 }

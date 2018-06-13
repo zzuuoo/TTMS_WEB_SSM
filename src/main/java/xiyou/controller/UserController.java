@@ -23,6 +23,11 @@ public class UserController{
     @Autowired
     private WebUserServiceImpl userService;
 
+    @RequestMapping("/tohome")
+    public String tohome(){
+        return "";
+    }
+
     @RequestMapping("/touser")
     public String touser(){
         return "user";
@@ -83,7 +88,7 @@ public class UserController{
     @RequestMapping(value = "insertUser",method = RequestMethod.POST)
     public Msg insertUser( User user)
     {
-        System.out.println(user.getEmpNo()+user.getEmpPass()+user.getType()+user.getHeadPath());
+//        System.out.println(user.getEmpNo()+user.getEmpPass()+user.getType()+user.getHeadPath());
         if(userMapper.insertSelective(user)>0)
             return Msg.success();
         return Msg.fail();

@@ -29,4 +29,5 @@ public interface SaleMapper {
     int updateByPrimaryKey(Sale record);
 
     List<Sale> selectByEmpId(Integer empId);
+
 }

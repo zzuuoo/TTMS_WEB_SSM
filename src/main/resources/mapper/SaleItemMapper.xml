@@ -193,4 +193,11 @@
       sale_item_price = #{saleItemPrice,jdbcType=DECIMAL}
     where sale_item_id = #{saleItemId,jdbcType=BIGINT}
   </update>
+
+  <select id="selectBySaleId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from sale_item
+    where sale_Id = #{saleId,jdbcType=BIGINT}
+  </select>
 </mapper>

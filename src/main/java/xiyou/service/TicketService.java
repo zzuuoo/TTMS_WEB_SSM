@@ -12,7 +12,11 @@ public interface TicketService {
     List<Ticket> selectAll();
     List<Ticket> selectBySchedId(int schedId);
     Ticket selectByPrimaryKey(long ticketId);
-
-
+    int updataTicketStatus(Integer status,Integer schedId,Integer seatId);
+    int buyTickets(List<Ticket> tickets,Integer emp_id);
+    int lockTickets(List<Ticket> tickets);
+    int unlockTickets(List<Ticket> tickets);
+    List<Ticket> selectTicketByTicket(List<Ticket> tickets);
+    int refundTicket(Long saleId);
 
 }

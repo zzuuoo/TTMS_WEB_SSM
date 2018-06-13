@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import xiyou.dao.PlayMapper;
 import xiyou.pojo.Play;
 import xiyou.service.WebPlayService;
+
+import java.util.List;
+
 @Service
 public class WebPlayServiceImpl implements WebPlayService {
 
@@ -13,5 +16,11 @@ public class WebPlayServiceImpl implements WebPlayService {
 
     public Play selectByPrimaryKey(int playId) {
         return playMapper.selectByPrimaryKey(playId);
+    }
+
+    @Override
+    public List<Play> selectAllPlay(){
+        List<Play> plays = playMapper.selectByExample(null);
+        return plays;
     }
 }

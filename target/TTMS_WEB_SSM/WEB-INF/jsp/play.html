@@ -3,420 +3,346 @@
 <head>
     <meta charset="UTF-8">
     <title>影厅管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src=".././lib/jquery-3.1.1.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/play.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <meta   http-equiv= "Pragma"   content= "no-cache" />
+    <meta   http-equiv= "Cache-Control"   content= "no-cache" />
+    <meta   http-equiv= "Expires"   content= "0" />
 </head>
 
-<script>
-    window.onload = function () {
 
-        var data = sessionStorage.getItem('user');
-        if (data) {
-            document.getElementById("user").innerHTML = "退出";
-            document.getElementById("logout").innerHTML = `您好！ ${data}`;
-            document.getElementById("user").href = './home.html';
-            document.getElementById("logout").href = './personalCenter.html';
-        } else {
-            document.getElementById("logout").innerHTML = `登录`;
-            document.getElementById("logout").href = `./login.html`;
-        }
-
-        $('#filmName').focus();
-        $.ajax({
-            url: `http://123.206.67.174:18000/film/querys?film_name`,
-            type: 'get',
-            datatype: 'jsonp',
-            crossDomain: true,
-            xhrFields: {withCredentials: true},
-            success: function (data) {
-                for (var i = 0; i < data.Detail.length; i++) {
-                    var displayInfo = document.getElementById("display");
-                    displayInfo.innerHTML += `
-                        <div class="unit" id=${data.Detail[i].film_id}>
-        <div class="imagePosition" id="image">
-            <img src=${data.Detail[i].film_img} class="imageSize">
-        </div>
-        <div class="tablePosition">
-            <table class="unitTable">
-                <tr>
-                    <th class="tdStyle">影片ID:</th>
-                    <td id="film_id">${data.Detail[i].film_id}</td>
-                    <th style="padding-left: 30px"> 影片详情:</th>
-                    <td id="description" rowspan="6">
-                      ${data.Detail[i].film_information}
-                    </td>
-                </tr>
-                <tr>
-                    <th style="margin-right: 50px">影片名称:</th>
-                    <td id="film_name">${data.Detail[i].film_name}</td>
-                </tr>
-                <tr>
-                    <th>影片主演:</th>
-                    <td id="film_star">${data.Detail[i].film_tostar}</td>
-                </tr>
-                <tr>
-                    <th>上映时间:</th>
-                    <td id="film_release">${data.Detail[i].film_release}</td>
-                </tr>
-                <tr>
-                    <th>播放时长:</th>
-                    <td id="film_hour">${data.Detail[i].film_hourlong}</td>
-                </tr>
-                <tr>
-                    <th>影片类型:</th>
-                    <td id="film_type">${data.Detail[i].film_type}</td>
-                </tr>
-                <tr>
-                    <th>影片价格:</th>
-                    <td id="film_price">${data.Detail[i].film_price}</td>
-                    <td><button class="buttonPositiion btn btn-default infoButton"
-                     name=${data.Detail[i].film_name}  data-toggle="modal" data-target="#onlyModal" onclick=modifyFilm(this) >修改</button></td>
-                    <td><button class=" btn btn-default dangerButton" style="margin-left: 50px"
-                    name=${data.Detail[i].film_id} onclick=deleteFilm(this)>删除</button></td>
-                </tr>
-            </table>
-        </div></div>`;
-                }
-            }
-        });
-        document.getElementById("searchPlayByName").addEventListener("click", function () {
-            var filmName = document.getElementById('filmName').value;
-            var displayInfo = document.getElementById("display");
-            displayInfo.innerHTML = ``;
-            $.ajax({
-                url: `http://123.206.67.174:18000/film/querys`,
-                type: 'get',
-                datatype: 'jsonp',
-                data: {
-                    film_name: filmName
-                },
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                success: function (data) {
-                    console.log("Playdata+++++", data);
-                    for (var i = 0; i < data.Detail.length; i++) {
-                        displayInfo.innerHTML += `
-                        <div class="unit" id=${data.Detail[i].film_id}>
-        <div class="imagePosition">
-            <img src=${data.Detail[i].film_img} class="imageSize">
-        </div>
-        <div class="tablePosition">
-            <table class="unitTable">
-                <tr>
-                    <th class="tdStyle">影片ID:</th>
-                    <td id="film_id">${data.Detail[i].film_id}</td>
-                    <th style="padding-left: 30px"> 影片详情:</th>
-                    <td id="description" rowspan="6">
-                      ${data.Detail[i].film_information}
-                    </td>
-                </tr>
-                <tr>
-                    <th style="margin-right: 50px">影片名称:</th>
-                    <td id="film_name">${data.Detail[i].film_name}</td>
-                </tr>
-                <tr>
-                    <th>影片主演:</th>
-                    <td id="film_star">${data.Detail[i].film_tostar}</td>
-                </tr>
-                <tr>
-                    <th>上映时间:</th>
-                    <td id="film_release">${data.Detail[i].film_release}</td>
-                </tr>
-                <tr>
-                    <th>播放时长:</th>
-                    <td id="film_hour">${data.Detail[i].film_hourlong}</td>
-                </tr>
-                <tr>
-                    <th>影片类型:</th>
-                    <td id="film_type">${data.Detail[i].film_type}</td>
-                </tr>
-                <tr>
-                    <th>影片价格:</th>
-                    <td id="film_price">${data.Detail[i].film_price}</td>
-                    <td><button class="buttonPositiion btn btn-default infoButton"
-                     name=${data.Detail[i].film_name}  data-toggle="modal" data-target="#onlyModal" onclick=modifyFilm(this) >修改</button></td>
-                    <td><button class=" btn btn-default dangerButton" style="margin-left: 50px"
-                    name=${data.Detail[i].film_id} onclick=deleteFilm(this)>删除</button></td>
-                </tr>
-            </table>
-        </div></div>`;
-                    }
-                }
-            });
-        });
-
-        document.getElementById("addFilm").addEventListener("click", function () {
-            window.location.href = 'addPlay.html';
-        });
-
-        document.getElementById("user").addEventListener('click', function () {
-            sessionStorage.removeItem("user");
-            $.ajax({
-                url: `http://123.206.67.174:18000/user/cancellation?`,
-                type: 'get',
-                datatype: 'jsonp',
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                success: function (data) {
-                    if (data.Detail.status) {
-                        window.location.href = `home.html?status=0`;
-                    } else {
-                        window.location.href = 'home.html?status=1'
-                    }
-                }
-            });
-        });
-
-        document.getElementById("submit").addEventListener("click", function () {
-            var name = document.getElementById("name").value;
-            var star = document.getElementById("star").value;
-            var release = document.getElementById("release").value;
-            var hourlong = document.getElementById("hourlong").value;
-            var type = document.getElementById("type").value;
-            var price = document.getElementById("price").value;
-            var image = document.getElementById("image").value;
-            var film_information = document.getElementById("film_information").value;
-            console.log(film_information);
-            $.ajax({
-                url: `http://123.206.67.174:18000/film/updata`,
-                type: 'get',
-                datatype: 'jsonp',
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                data: {
-                    film_name: name,
-                    film_tostar: star,
-                    film_release: release,
-                    film_hourlong: hourlong,
-                    film_type: type,
-                    film_price: price,
-                    film_information: film_information
-                },
-                success: function (data) {
-                    if (data.Detail.status) {
-                        document.getElementById("addWarning").innerHTML = "修改成功！";
-                        window.location.href = 'play.html';
-                    } else {
-                        document.getElementById("addWarning").innerHTML = "修改失败！";
-                    }
-                },
-                error: function (error) {
-                    console.log("response error");
-                    console.log(error);
-                }
-            });
-
-           /* var formDOM=document.getElementById("uploadForm")[0];
-            var name = document.getElementById("name").value;
-            var star = document.getElementById("star").value;
-            var release = document.getElementById("release").value;
-            var hourlong = document.getElementById("hourlong").value;
-            var type = document.getElementById("type").value;
-            var price = document.getElementById("price").value;
-            var film_information = document.getElementById("film_information").value;
-            var data = new FormData(formDOM);
-            data.append("film_name",name );
-            data.append("film_tostar",star);
-            data.append("film_release",release);
-            data.append("film_hourlong", hourlong);
-            data.append("film_type",type);
-            data.append("film_price", price);
-            data.append("film_information", film_information);
-            $.ajax({
-                url: "http://123.206.67.174:18000/film/updatafilm",
-                type: 'post',
-                data: data,
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                processData: false,
-                contentType: false,
-                success: function (data) {
-                    console.log("upload", data);
-                },
-                error: function (jqXHR) {
-                    console.log(jqXHR);
-                },
-            });*/
-        })
-
-
-    };
-
-    function modifyFilm(object) {
-        var name = $(object).attr("name");
-        console.log("name+++++", name);
-        $.ajax({
-            url: `http://123.206.67.174:18000/film/querys?`,
-            type: 'get',
-            datatype: 'jsonp',
-            data: {
-                film_name: name
-            },
-            crossDomain: true,
-            xhrFields: {withCredentials: true},
-            success: function (data) {
-                var object = data.Detail[0];
-                console.log("film_name+++++", object);
-                $('#name').attr("value", `${object.film_name}`);
-                $('#star').attr("value", `${object.film_tostar}`);
-                $('#release').attr("value", `${object.film_release}`);
-                $('#hourlong').attr("value", `${object.film_hourlong}`);
-                $('#type').attr("value", `${object.film_type}`);
-                $('#price').attr("value", `${object.film_price}`);
-                document.getElementById("film_information").innerHTML = `${object.film_information}`;
-            }
-        });
-    }
-
-    function deleteFilm(object) {
-        var id = $(object).attr("name");
-        console.log("id++++", id);
-        $.ajax({
-            url: `http://123.206.67.174:18000/film/deleteFilm?`,
-            type: 'get',
-            datatype: 'jsonp',
-            data: {
-                film_id: id
-            },
-            crossDomain: true, xhrFields: {withCredentials: true},
-            success: function (data) {
-                if (data.Detail.status) {
-                    document.getElementById("searchWarning").innerHTML = "删除成功！";
-                    window.location.href = `play.html`;
-                } else {
-                    document.getElementById("searchWarning").innerHTML = "删除失败！";
-                }
-            }
-        });
-    }
-
-    function judgeName() {
-        var name = document.getElementById("name").value;
-        var pattern = /^[\u4e00-\u9fa5a-zA-Z0-9]*$/;
-        var status = name.match(pattern);
-        if(!status){
-            alert("格式不正确，请重新输入");
-        }
-    }
-
-    function judgeStar() {
-        var star=document.getElementById("star").value;
-        var pattern=/[\u4e00-\u9fa5a-zA-Z0-9]*!/;
-        var status = name.match(pattern);
-        if(!status){
-            alert("格式不正确，请重新输入！");
-        }
-    }
-
-    function judgeRelease() {
-        var release=document.getElementById("release").value;
-        var pattern=/^2017年(0?[1-9]|1[0-2])月((0?[1-9])|((1|2)[0-9])|30|31)日$/;
-        if(!release.match(pattern)){
-            alert("格式不正确，请重新输入！")
-        }
-    }
-    function judgeType() {
-        var type=document.getElementById("type").value;
-        var pattern=/^[\u4e00-\u9fa5]*$/;
-        if(!type.match(pattern)){
-            alert("格式不正确，请重新输入！")
-        }
-    }
-
-    function judgePrice() {
-        var price=document.getElementById("price").value;
-        var pattern=/^[1-9]d*$/;
-        if(!price.match(pattern)){
-            alert("格式不正确，请重新输入！")
-        }
-    }
-
-</script>
 <body>
 
 <nav class="navStyle">
-    <a class="navbar-brand" href="./home.html" id="jumpToHome">首页</a>
-    <a class="navbar-brand" href="./user.html">用户管理</a>
-    <a class="navbar-brand" href="#">剧目管理</a>
-    <a class="navbar-brand" href="./studio.html">影厅管理</a>
-    <a class="navbar-brand" href="./schedule.html">演出计划管理</a>
-    <a class="navbar-brand log" id="user"></a>
-    <a class="navbar-brand log" href="./personalCenter.html" id="logout">退出</a>
+    <div>
+        <a class="navbar-brand" href="/tohome">首页</a>
+        <a class="navbar-brand" href="/toplay">影片管理</a>
+        <a class="navbar-brand" href="/tostudio">影厅管理</a>
+        <a class="navbar-brand" href="/toseat">座位管理</a>
+        <a class="navbar-brand" href="/toschedule">演出计划管理</a>
+        <a class="navbar-brand" href="/toemployee">员工管理</a>
+        <a class="navbar-brand" href="/touser">用户管理</a>
+        <a class="navbar-brand log" id="user"></a>
+        <a class="navbar-brand log" href="" id="logout">退出</a>
+    </div>
 </nav>
 
-<div class="playTheme">
-    <h1 class="textStyle">剧目管理</h1>
+
+<div class="userTheme">
+    <h1 class="textStyle">影片管理</h1>
 </div>
 
-<div style="margin-left: 45%" id="searchWarning">
+<div >
+    <div class="container">
+        <div class="row col-md-12 col-md-offset-0 custyle">
+
+            <div class="row searchplay">
+                <input type=" text" class="form-control search" id="userId" placeholder="请输入ID查询"/>
+                <button class="btn btn-info">查询影片</button>
+                <button class="btn  searchPlay buttonStyle" id="play_add_model_btn"> 添 加 影 片</button>
+            </div>
+
+            <div class="row" id="play_table">
+            </div>
+
+            <!--分页条-->
+            <div class="row">
+                <div class="col-md-6" id="page_info_area"></div>
+            </div>
+            <!--页码区域-->
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="page_nav_area"></div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
-<div class="input-group col-md-4 col-md-offset-4 search">
-    <input type="text" class="form-control inputStyle" placeholder="请输入剧目名称" id="filmName"/>
-    <span class="input-group-btn">
-        <button class="btn btn-default btn-search inputStyle infoButton" id="searchPlayByName">查找</button>
-         <button class="btn btn-default btn-search inputStyle infoButton" id="addFilm"
-                 style="margin-left: 5px">添加</button>
-    </span>
-</div>
-<div class="displayInfo" id="display">
-</div>
-<div class="modal fade" id="onlyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+
+<!--&lt;!&ndash; 影片添加的模态框 &ndash;&gt;-->
+<!--<div class="modal fade" id="playAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">-->
+    <!--<div class="modal-dialog" role="document">-->
+        <!--<div class="modal-content">-->
+            <!--<div class="modal-header">-->
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                <!--<h4 class="modal-title" id="myModalLabel">影片添加</h4>-->
+            <!--</div>-->
+            <!--<div class="modal-body">-->
+                <!--&lt;!&ndash; 表单&ndash;&gt;-->
+                <!--<form id="play_Insert_form" name="play_Insert_form">-->
+                    <!--<div hidden>-->
+                        <!--<label >影片ID</label>-->
+                        <!--<input type="text" class="form-control" id="playId_add_input" name="playId" placeholder="Id" value="0">-->
+                    <!--</div>-->
+
+
+                    <!--<div class="form-group">-->
+                        <!--<label >影片名</label>-->
+                        <!--<input type="text" class="form-control" id="playName_add_input" name="playName" placeholder="影片名" >-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label >语言类型</label>-->
+                        <!--<select class="form-control" name="playLang" id="playLang_add_select">-->
+                            <!--<option value="中文">中文</option>-->
+                            <!--<option value="英语">英语</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label >影片类型</label>-->
+                        <!--<select class="form-control" name="playType" id="playType_add_select">-->
+                            <!--<option value="动作片">动作片</option>-->
+                            <!--<option value="喜剧片">喜剧片</option>-->
+                            <!--<option value="浪漫爱情片">浪漫爱情片</option>-->
+                            <!--<option value="战争片">战争片</option>-->
+                            <!--<option value="悬疑片">悬疑片</option>-->
+                            <!--<option value="恐怖片">恐怖片</option>-->
+                            <!--<option value="科幻片">科幻片</option>-->
+                        <!--</select>-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label >影片时长</label>-->
+                        <!--<input type="text" class="form-control" id="playLength_add_input" name="playLength" placeholder="影片时长(分钟)">-->
+                    <!--</div>-->
+
+                    <!--<div class="form-group">-->
+                        <!--<label >影片价格</label>-->
+                        <!--<input type="text" class="form-control" id="playTicketPrice_add_input" name="playTicketPrice" placeholder="影片价格(元)">-->
+                    <!--</div>-->
+
+
+                    <!--<div class="form-group">-->
+                        <!--<label >影片图片</label>-->
+                        <!--<input type="file" id="playImage_add_input" name="playImage" >-->
+
+                    <!--</div>-->
+
+                <!--</form>-->
+            <!--</div>-->
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-primary" data-dismiss="modal" id="play_insert_submit_btn">保存</button>-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!-- 影片添加的模态框 -->
+<div class="modal fade" id="playAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header" >
-                <h4 class="modal-title" id="exampleModalLabel" style="text-align: center">修改影片信息</h4>
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">影片添加</h4>
             </div>
             <div class="modal-body">
-                <form class="form-inline" enctype="multipart/form-data" id="uploadForm">
-                    <div class="inputPosition">
-                        <span id="addWarning"></span>
+                <!-- 表单-->
+                <form id="play_Insert_form" name="play_Insert_form" action="/insertPlay" method="post"  enctype="multipart/form-data">
+                    <div hidden>
+                        <label >影片ID</label>
+                        <input type="text" class="form-control" id="playId_add_input" name="playId" placeholder="Id" value="0">
                     </div>
-                    <div class="inputPosition">
-                        <label>影片名称:</label>
-                        <input type="text" class="btn btn-default" id="name"  disabled onblur=judgeName()>
+
+
+                    <div class="form-group">
+                        <label >影片名</label>
+                        <input type="text" class="form-control" id="playName_add_input" name="playName" placeholder="影片名" >
                     </div>
-                    <div class="inputPosition">
-                        <label>影片主演:</label>
-                        <input type="text" class="btn btn-default" id="star" onblur=judgeStar()>
+
+                    <div class="form-group">
+                        <label >语言类型</label>
+                        <select class="form-control" name="playLang" id="playLang_add_select">
+                            <option value="中文">中文</option>
+                            <option value="英语">英语</option>
+                        </select>
                     </div>
-                    <div class="inputPosition">
-                        <label>上映时间:</label>
-                        <input type="text" class="btn btn-default" id="release">
-                      <!--  <input type="datetime-local" class="btn btn-default" id="release" style="width:180px">-->
+
+                    <div class="form-group">
+                        <label >影片描述</label>
+                        <input type="text" class="form-control" id="playIntroduction_add_input" name="playIntroduction" placeholder="影片描述" >
                     </div>
-                    <div class="inputPosition">
-                        <label>影片时长:</label>
-                        <input type="text" class="btn btn-default" id="hourlong" onblur=judgeRelease()>
+
+                    <div class="form-group">
+                        <label >影片类型</label>
+                        <select class="form-control" name="playType" id="playType_add_select">
+                            <option value="动作片">动作片</option>
+                            <option value="喜剧片">喜剧片</option>
+                            <option value="浪漫爱情片">浪漫爱情片</option>
+                            <option value="战争片">战争片</option>
+                            <option value="悬疑片">悬疑片</option>
+                            <option value="恐怖片">恐怖片</option>
+                            <option value="科幻片">科幻片</option>
+                        </select>
                     </div>
-                    <div class="inputPosition">
-                        <label>影片类型:</label>
-                        <input type="text" class="btn btn-default" id="type" onblur="judgeType()">
+
+                    <div class="form-group">
+                        <label >影片时长</label>
+                        <input type="text" class="form-control" id="playLength_add_input" name="playLength" placeholder="影片时长(分钟)">
                     </div>
-                    <div class="inputPosition">
-                        <label>影片价格:</label>
-                        <input type="text" class="btn btn-default" id="price" onblur=judgePrice()>
+
+                    <div class="form-group">
+                        <label >影片价格</label>
+                        <input type="text" class="form-control" id="playTicketPrice_add_input" name="playTicketPrice" placeholder="影片价格(元)">
                     </div>
-                    <div class="inputPosition">
-                        <label>影片简介:</label>
-                        <textarea type="text" class="btn btn-default" id="film_information"></textarea>
+
+                    <div class="form-group">
+                        <label >影片状态</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="playStatus" id="play_add_type1" value="0" checked="checked"> 不可用
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="playStatus" id="play_add_type2" value="1"> 可用
+                        </label>
                     </div>
-                   <!-- <div class="inputPosition">
-                        <label>上传图片:</label>
-                        <input type="file" class="btn btn-default" id="film_image" multiple="multiple">
-                    </div>-->
+
+
+                    <div class="form-group">
+                        <label >影片图片</label>
+                        <input type="file" id="playImage_add_input" name="playImage" >
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="提交">
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer" style="text-align: center">
-                <button type="button" class="btn btn-default" data-dismiss="modal" style="margin-right: 20px">返回
-                </button>
-                <button type="button" class="btn infoButton" id="submit">提交</button>
+            <!--<div class="modal-footer">-->
+                <!--<button type="button" class="btn btn-primary" data-dismiss="modal" id="play_insert_submit_btn">保存</button>-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<!-- 影片编辑的模态框 -->
+<div class="modal fade" id="playUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myUpdateLabel">影片信息修改</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- 表单-->
+
+                <form id="play_Update_form" name="play_Update_form" action="/updatePlay" method="post"  enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label >影片ID</label>
+                        <input type="text" class="form-control" id="playId_update_input" name="playId" placeholder="Id" readonly>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label >影片名</label>
+                        <input type="text" class="form-control" id="playName_update_input" name="playName" placeholder="影片名" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >语言类型</label>
+                        <select class="form-control" name="playLang" id="playLang_update_select">
+                            <option value="中文">中文</option>
+                            <option value="英语">英语</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片描述</label>
+                        <input type="text" class="form-control" id="playIntroduction_update_input" name="playIntroduction" placeholder="影片描述" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片类型</label>
+                        <select class="form-control" name="playType" id="playType_update_select">
+                            <option value="动作片">动作片</option>
+                            <option value="喜剧片">喜剧片</option>
+                            <option value="浪漫爱情片">浪漫爱情片</option>
+                            <option value="战争片">战争片</option>
+                            <option value="悬疑片">悬疑片</option>
+                            <option value="恐怖片">恐怖片</option>
+                            <option value="科幻片">科幻片</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片时长</label>
+                        <input type="text" class="form-control" id="playLength_update_input" name="playLength" placeholder="影片时长(分钟)">
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片价格</label>
+                        <input type="text" class="form-control" id="playTicketPrice_update_input" name="playTicketPrice" placeholder="影片价格(元)">
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片状态</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="playStatus" id="play_update_type1" value="0" checked="checked"> 不可用
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="playStatus" id="play_update_type2" value="1"> 可用
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label >影片图片</label>
+                        <input type="file" id="playImage_update_input" name="playImage" >
+                    </div>
+
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-primary" value="提交">
+                    </div>
+
+
+
+                </form>
+            </div>
+            <!--<div class="modal-footer">-->
+
+                <!--<button type="button" class="btn btn-primary" data-dismiss="modal" id="play_submit_btn">保存</button>-->
+                <!--<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+
+<!-- 影片删除的警示模态框 -->
+<div class="modal fade bs-example-modal-sm" id="playDeleteModel" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >确认删除影片？</h4>
+            </div>
+            <div class="modal-body center">
+
+                <button type="button" class="btn btn-danger" id="model_delete_btn" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+<script type="text/javascript" src="/js/play.js"></script>
+
 </body>
 </html>
 

@@ -24,15 +24,15 @@ public class MobileUserController {
 
     @ResponseBody
     @RequestMapping(value = "login")
-    public User login(@RequestParam String name, @RequestParam String password, HttpServletRequest request, HttpServletResponse response)
+    public String login(@RequestParam String name, @RequestParam String password)
     {
         User user = userMapper.selectByPrimaryKey(name);
 
         if(password.equals(user.getEmpPass()))
         {
-            return user;
+            return "succeed";
         }
-        return null;
+        return "failed";
     }
     @ResponseBody
     @RequestMapping(value ="getUserById",method = RequestMethod.GET)
@@ -69,7 +69,7 @@ public class MobileUserController {
 
     @ResponseBody
     @RequestMapping(value = "insertUser",method = RequestMethod.POST)
-    public String insertUser(@RequestParam User user)
+    public String insertUser(@RequestBody User user)
     {
         if(userMapper.insert(user)>0)
             return "succeed";
@@ -78,7 +78,7 @@ public class MobileUserController {
 
     @ResponseBody
     @RequestMapping(value = "updateUser",method = RequestMethod.POST)
-    public String updatetUser(@RequestParam User user)
+    public String updatetUser(@RequestBody User user)
     {
         if(userMapper.updateByPrimaryKey(user)>0)
             return "succeed";

@@ -101,7 +101,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="xiyou.pojo.Ticket">
+  <insert id="insert" parameterType="xiyou.pojo.Ticket" useGeneratedKeys="true" keyProperty="ticketId">
     insert into ticket (ticket_id, seat_id, sched_id, 
       ticket_price, ticket_status, ticket_locked_time
       )
@@ -247,4 +247,25 @@
     ticket_locked_time = #{ticketLockedTime,jdbcType=TIMESTAMP}
     where sched_id = #{sched_id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateTicketStatus">
+    update ticket
+    set
+    ticket_status = #{0}
+    where sched_id = #{1,jdbcType=INTEGER} AND seat_id = #{2,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectBySchedIdSeatId"  resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from ticket
+    where sched_id = #{0} AND seat_id = #{1}
+  </select>
+
+  <!--<update id="LockTicket">-->
+    <!--update ticket-->
+    <!--set-->
+    <!--ticket_locked_time =  #{ticketLockedTime,jdbcType=TIMESTAMP}-->
+    <!--where sched_id = #{0} AND seat_id = {1}-->
+  <!--</update>-->
 </mapper>

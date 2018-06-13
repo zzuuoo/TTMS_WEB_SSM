@@ -20,22 +20,18 @@ public class ScheduleController {
     @ResponseBody
     @RequestMapping(value = "getSchedule",method = RequestMethod.GET)
     public Msg getSchedule(@RequestParam(value = "page",defaultValue = "1")Integer page){
-        PageHelper.startPage(page,1);
+        PageHelper.startPage(page,5);
         List<Schedule> schedules  = scheduleMapper.selectByExample(null);
-        int p =schedules.size()/10;
-        if (schedules.size()%10!=0) p++;
-        PageInfo pageInfo = new PageInfo(schedules,p);
+        PageInfo pageInfo = new PageInfo(schedules,5);
         return Msg.success().add("info",pageInfo);
     }
 
     @ResponseBody
     @RequestMapping(value = "getScheduleByPlayId",method = RequestMethod.GET)
     public Msg getScheduleByPlayId(@RequestParam(value = "page",defaultValue = "1")Integer page,@RequestParam int play_id){
-        PageHelper.startPage(page,1);
+        PageHelper.startPage(page,5);
         List<Schedule> schedules  = scheduleMapper.selectByPlayId(play_id);
-        int p =schedules.size()/10;
-        if (schedules.size()%10!=0) p++;
-        PageInfo pageInfo = new PageInfo(schedules,p);
+        PageInfo pageInfo = new PageInfo(schedules,5);
         return Msg.success().add("info",pageInfo);
     }
 

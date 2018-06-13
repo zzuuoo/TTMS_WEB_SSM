@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import xiyou.pojo.Ticket;
 import xiyou.service.TicketService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @CrossOrigin
@@ -35,6 +36,13 @@ public class MobileTicketController {
     {
         return ticketService.selectBySchedId(sched_id);
     }
+
+//    @ResponseBody
+//    @RequestMapping("getTicketBySchedId")
+//    private List<Ticket>  getTicketBySchedId(@RequestParam int sched_id)
+//    {
+//        return ticketService.selectBySchedId(sched_id);
+//    }
 
     @ResponseBody
     @RequestMapping("getTicketById")
@@ -80,18 +88,55 @@ public class MobileTicketController {
     }
     @ResponseBody
     @RequestMapping(value = "updateTicketList",method = RequestMethod.POST)
-    private String updateTicketList(@RequestBody  List<Ticket> ticket)
+    private String updateTicketList(@RequestBody  List<Ticket> tickets,@RequestParam Integer emp_id)
     {
-        int k =0;
-        for(int i=0;i<ticket.size();i++)
-        {
-            k = ticketService.update(ticket.get(i));
-        }
+        int k =ticketService.buyTickets(tickets,emp_id);
+
+        System.out.println("我是id:"+emp_id);
         if(k>0)
+        {
+            System.out.println(k);
+            return "succeed";
+        }
+        return "failed";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "selectTicketListBytickets",method = RequestMethod.POST)
+    private List<Ticket> selectTicketListBytickets(@RequestBody  List<Ticket> ticket)
+    {
+        List<Ticket> ticketList = ticketService.selectTicketByTicket(ticket);
+        return ticketList;
+    }
+    @ResponseBody
+    @RequestMapping(value = "lockTicketList",method = RequestMethod.POST)
+    private String lockTicketList(@RequestBody List<Ticket> tickets)
+    {
+        if(ticketService.lockTickets(tickets)>0)
         {
             return "succeed";
         }
         return "failed";
     }
+    @ResponseBody
+    @RequestMapping(value = "unlockTicketList",method = RequestMethod.POST)
+    private String unlockTicketList(@RequestBody List<Ticket> tickets)
+    {
+        if(ticketService.unlockTickets(tickets)>0)
+        {
+            return "succeed";
+        }
+        return "failed";
+    }
+    @ResponseBody
+    @RequestMapping(value = "refundTcket",method = RequestMethod.GET)
+    private String refundTcket(@RequestParam Long SaleId){
+        if(ticketService.refundTicket(SaleId)>0)
+        {
+            return "succeed";
+        }
+        return "failed";
+    }
+
 
 }

@@ -2,173 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Studio</title>
+    <title>影厅管理</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../lib/bootstrap.min.css">
-    <script src="../lib/jquery-3.1.1.min.js"></script>
-    <script src="../lib/bootstrap.min.js"></script>
-    <script src=".././lib/jquery-3.1.1.min.js"></script>
-    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="../css/nav.css">
-    <link rel="stylesheet" href="../css/studio.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="/css/user.css">
+    <meta   http-equiv= "Pragma"   content= "no-cache" />
+    <meta   http-equiv= "Cache-Control"   content= "no-cache" />
+    <meta   http-equiv= "Expires"   content= "0" />
 </head>
 
-<script>
-
-    var studioInfo;
-    window.onload = function () {
-        var data = sessionStorage.getItem('user');
-        if (data) {
-            document.getElementById("user").innerHTML = "退出";
-            document.getElementById("logout").innerHTML = `您好！ ${data}`;
-            document.getElementById("user").href = './home.html';
-            document.getElementById("logout").href = './personalCenter.html';
-        } else {
-            document.getElementById("logout").innerHTML = `登录`;
-            document.getElementById("logout").href = `./login.html`;
-        }
-
-
-        $.ajax({
-            url: "http://123.206.67.174:18000/studio/queryStudio",
-            type: "GET",
-            datatype: 'jsonp',
-            data: {},
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: 'true'
-            },
-            success: function (data) {
-                console.log("studio: ", data);
-
-                studioInfo = data;
-
-                var tb = document.getElementById("mytable");
-                for (var i = 0; i < data.Detail.length; i++) {
-                    var tr = tb.insertRow();
-                    tr.setAttribute("id", i);
-                    var td1 = tr.insertCell(0);
-                    var td2 = tr.insertCell(1);
-                    var td3 = tr.insertCell(2);
-                    var td4 = tr.insertCell(3);
-                    var td5 = tr.insertCell(4);
-                    var td6 = tr.insertCell(5);
-                    td1.innerText = data.Detail[i].studio_id;
-                    td2.innerText = data.Detail[i].studio_name;
-                    td3.innerText = data.Detail[i].studio_col_count;
-                    td4.innerText = data.Detail[i].studio_row_count;
-                    td5.innerText = data.Detail[i].studio_flag;
-                    td6.innerHTML = '<td class="text-center"><a class="btn btn-info btn-xs"' +
-                            ' onclick="editStudio(this)" name=' + data.Detail[i].studio_id + '>' +
-                            '<span class="glyphicon glyphicon-edit"></span> Edit</a> ' +
-                            '<a href="#" class="btn btn-danger btn-xs" onclick="deleteStudio(this)" name=' + data.Detail[i].studio_id + '>' +
-                            '<span class="glyphicon glyphicon-remove">Del</span></a>' +
-                            '<a href="./seat.html?studio_id=' + data.Detail[i].studio_id + '" class="btn btn-danger btn-xs">' +
-                            '<span class="glyphicon">Seat</span></a>'
-                }
-            }
-        });
-
-        document.getElementById("user").addEventListener('click', function () {
-            sessionStorage.removeItem("user");
-            $.ajax({
-                url: `http://123.206.67.174:18000/user/cancellation?`,
-                type: 'get',
-                datatype: 'jsonp',
-                crossDomain: true,
-                xhrFields: {withCredentials: true},
-                success: function (data) {
-                    if (data.Detail.status) {
-                        window.location.href = `home.html?status=0`;
-                    } else {
-                        window.location.href = 'home.html?status=1'
-                    }
-                }
-            });
-        })
-    };
-
-    var id;
-
-    function editStudio(a) {
-//        $("tr").click(function () {
-        id = $(a).attr("name");
-//        });
-
-        $("a").attr("href", "editStudio.html?studio_id=" + id);
-    }
-
-    function deleteStudio(a) {
-        id = $(a).attr("name");
-        alert(id);
-
-        $.ajax({
-                    url: "http://123.206.67.174:18000/studio/deleteStudio",
-                    type: "get",
-                    datatype: 'jsonp',
-                    data: {
-                        studio_id: id
-                    },
-                    crossDomain: true,
-                    xhrFields: {
-                        withCredentials: 'true'
-                    },
-                    success: function (data) {
-                        window.location.href = './studio.html'
-                    }
-                }
-        )
-    }
-
-    function searchById() {
-        $.ajax({
-            url: "http://123.206.67.174:18000/studio/queryStudio",
-            type: "GET",
-            datatype: 'jsonp',
-            data: {
-                studio_id: document.getElementById("studioId").value
-            },
-            crossDomain: true,
-            xhrFields: {
-                withCredentials: 'true'
-            },
-            success: function (data) {
-                document.getElementById("mytable").innerHTML = '<tr> <th>演出厅ID</th>' +
-                        ' <th>演出厅名称</th> <th>座位行数</th> ' +
-                        '<th>座位列数</th> <th>状态</th> ' +
-                        '<th>Action</th> </tr>' +
-                        '<tr> <th>' + data.Detail[0].studio_id + '</th>' +
-                        '<th>' + data.Detail[0].studio_name + '</th>' +
-                        ' <th>' + data.Detail[0].studio_row_count + '</th> ' +
-                        '<th>' + data.Detail[0].studio_col_count + '</th> ' +
-                        '<th>' + data.Detail[0].studio_flag + '</th> ' +
-                        '<th>Action</th> </tr>'
-            }
-        })
-    }
-
-    function addStudio() {
-        window.location.href = "./addStudio.html"
-    }
-
-</script>
 
 <body>
 
 <nav class="navStyle">
     <div>
-        <a class="navbar-brand" href="./studio.html">首页</a>
-        <a class="navbar-brand" href="./user.html">用户管理</a>
-        <a class="navbar-brand" href="./play.html">剧目管理</a>
-        <a class="navbar-brand" href="#">影厅管理</a>
-        <a class="navbar-brand" href="./schedule.html">演出计划管理</a>
+        <a class="navbar-brand" href="/tohome">首页</a>
+        <a class="navbar-brand" href="/toplay">影片管理</a>
+        <a class="navbar-brand" href="/tostudio">影厅管理</a>
+        <a class="navbar-brand" href="/toseat">座位管理</a>
+        <a class="navbar-brand" href="/toschedule">演出计划管理</a>
+        <a class="navbar-brand" href="/toemployee">员工管理</a>
+        <a class="navbar-brand" href="/touser">用户管理</a>
         <a class="navbar-brand log" id="user"></a>
-        <a class="navbar-brand log" href="./personalCenter.html" id="logout">退出</a>
-
-
+        <a class="navbar-brand log" href="" id="logout">退出</a>
     </div>
 </nav>
-
 
 <div class="studioTheme">
     <h1 class="textStyle">影厅管理</h1>
@@ -180,23 +41,147 @@
                 <tbody>
                 <div class="searchStudio">
                     <input type=" text" class="form-control search" id="studioId" placeholder="请输入ID查询"/>
-                    <button class="btn buttonStyle" onclick=searchById()>查询 ID</button>
+                    <button class="btn buttonStyle" >查询 ID</button>
                 </div>
-                <button class="btn searchStudio buttonStyle" onclick=addStudio()><b>+</b> 添 加 用 户
-                </button>
+                <button class="btn searchStudio buttonStyle"> 添 加 用 户</button>
+
                 <tr>
                     <th>演出厅ID</th>
                     <th>演出厅名称</th>
                     <th>座位行数</th>
                     <th>座位列数</th>
+                    <th>演出厅描述</th
                     <th>状态</th>
-                    <th>Action</th>
+                    <th>操作</th>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<!-- 演出厅添加的模态框 -->
+<div class="modal fade" id="studioAddModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">演出厅添加</h4>
+            </div>
+            <div class="modal-body">
+                <!-- 表单-->
+                <form id="studio_Insert_form" name="studio_Insert_form">
+                    <div hidden>
+                        <label >演出厅ID</label>
+                        <input type="text" class="form-control" id="studioId_add_input" name="studioId" placeholder="Id" value="0">
+                    </div>
+
+
+                    <div class="form-group">
+                        <label >演出厅名称</label>
+                        <input type="text" class="form-control" id="studioName_add_input" name="studioName" placeholder="名称"  value="0" >
+                    </div>
+
+                    <div class="form-group">
+                        <label >座位行数</label>
+                        <input type="text" class="form-control" id="studioRowCount_add_input" name="studioRowCount" placeholder="座位行数" value="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label >座位列数</label>
+                        <input type="text" class="form-control" id="studioColCount_add_input" name="studioColCount" placeholder="座位列数" value="0">
+                    </div>
+
+                    <div class="form-group">
+                        <label >状态</label>
+                        <input type="text" class="form-control" id="studioFlag_add_input" name="studioFlag" placeholder="状态" value="0">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="emp_insert_submit_btn">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 员工编辑的模态框 -->
+<div class="modal fade" id="studioUpdateModel" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myUpdateLabel">演出厅信息修改</h4>
+            </div>
+            <div class="modal-body">
+
+                <!-- 表单-->
+                <form id="studio_Update_form" name="studio_Update_form">
+
+                    <div class="form-group" >
+                        <label >演出厅ID</label>
+                        <input type="text" class="form-control" id="studioId_Update_input" name="studioId" readonly="readonly">
+                        <!--<label id="empId_Update_label"></label>-->
+                        <!--<input type="text" class="form-control" id="empNo_Update_input" placeholder="">-->
+                    </div>
+
+                    <div class="form-group">
+                        <label >演出厅名称</label>
+                        <!--<input type="text" class="form-controls" id="empNo_Update_input" >-->
+                        <input type="text" class="form-control" id="studioName_Update_input" name="studioName" >
+                    </div>
+
+
+                    <div class="form-group">
+                        <label >座位行数</label>
+                        <input type="text" class="form-control" id="studioRowCount_Update_input" name="studioRowCount">
+                    </div>
+
+                    <div class="form-group">
+                        <label >座位列数</label>
+                        <input type="text" class="form-control" id="studioColCount_Update_input" name="studioColCount">
+                    </div>
+
+                    <div class="form-group">
+                        <label >状态</label>
+                        <input type="text" class="form-control" id="studioFlag_Update_input" name="studioColCount">
+                    </div>
+
+                </form>
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-primary" data-dismiss="modal" id="studio_submit_btn">保存</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- 员工删除的警示模态框 -->
+<div class="modal fade bs-example-modal-sm" id="studioDeleteModel" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" >确认删除演出厅？</h4>
+            </div>
+            <div class="modal-body center">
+
+                <button type="button" class="btn btn-danger" id="model_delete_btn" data-dismiss="modal">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="/js/studio.js"></script>
 
 
 </body>
