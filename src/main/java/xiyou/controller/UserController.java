@@ -16,7 +16,6 @@ import java.util.List;
 
 @Controller
 @CrossOrigin
-
 public class UserController{
     @Autowired
     private UserMapper userMapper;
